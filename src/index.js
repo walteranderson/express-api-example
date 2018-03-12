@@ -1,14 +1,14 @@
 import express from 'express';
-import methodOverride from 'method-override';
-import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import attachMiddleware from './middleware';
 
 const app = express();
 const PORT = process.env.PORT;
+const MONGO_DB_URL = process.env.MONGO_DB_URL;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride());
+mongoose.connect(MONGO_DB_URL);
+
+attachMiddleware(app);
 
 app.get('/', (req, res) => res.send('hello world'));
-
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
