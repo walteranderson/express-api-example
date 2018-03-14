@@ -2,8 +2,18 @@ import mongoose, { Schema } from 'mongoose';
 import pwHash from 'password-hash';
 
 const userSchema = Schema({
-    email: { type: String, required: true },
-    password: String
+  __v: {
+    type: Number, 
+    select: false
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    select: false
+  }
 });
 
 userSchema.pre('save', function(next) {
