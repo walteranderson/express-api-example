@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nf start dev",
+    "dev": "nodemon src/server.js --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec node -r dotenv/config -r babel-register src/index.js"
+    "lint": "standard --fix"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +15,7 @@
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
+    "foreman": "^3.0.1",
     "jsonwebtoken": "^8.2.0",
     "method-override": "^2.3.10",
     "mongoose": "^5.4.6",
@@ -20,13 +23,28 @@
     "password-hash": "^1.2.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "nodemon": "^1.18.3"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "nodemon": "^1.18.3",
+    "standard": "^12.0.1"
   },
   "babel": {
     "presets": [
-      "env"
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
     ]
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
