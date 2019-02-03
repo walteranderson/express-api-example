@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nf start dev",
-    "dev": "nodemon src/server.js --exec babel-node",
+    "prod": "nf start prod",
+    "build": "babel -d dist src/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "standard --fix"
   },

@@ -11,7 +11,7 @@ export default {
     return User.findOne({ email })
       .then((user) => {
         if (!user || !user.verifyPassword(password)) {
-          throw new Error()
+          throw new Error('Invalid credentials')
         }
 
         return user
